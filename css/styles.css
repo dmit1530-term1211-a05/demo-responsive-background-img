@@ -1,0 +1,60 @@
+/** start with the smallest screen and serve a scaled-down version of the background image to be conscious of the page load and bandwidth **/
+/** if our original is 4460px by 2973px and 950KB. Either use Photoshop or Squoosh.app to resize images**/
+
+/** first find the ratio of your image: 4460px/2973 = 1.5
+    second, reduce the size of your image (use PS or the Squoosh app)
+    thrid, run it through an online compression tool 
+**/
+
+header {
+    /*** source, position (x, y), / background-size, repetition**/
+    background: url(../img/header-plant-bg-sm.webp) center bottom / cover no-repeat;
+    /** longhand
+    background-image: url(../img/header-plant-bg-sm.webp);
+    background-position: center bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+    **/
+    height: 400px;
+    padding: 2rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+/** As the screen gets wider, the background image streches to fit and the lower quality image no looks good **/
+/** We can use media queries to swap out our background images to load nicer quality images for different screen sizes **/
+
+@media screen and (min-width: 800px) {
+    
+    header {
+        /*** source, position (x, y), / background-size, repetition**/
+        background: url(../img/header-plant-bg-md.webp) center bottom / cover no-repeat;
+    }
+
+    h1{
+        /** automatically increasing font-size **/
+        font-size: calc(2.5rem + 2vw);
+    }
+    
+
+}
+
+@media screen and (min-width: 1000px) {
+    header {
+        height: 500px;
+    }
+}
+
+/** for your larger screens, save your images at higher quality as it will stretch beyond the cropped width **/
+/** current recommedations are to try and keep full screen hero banner and background images under 250kb **/
+
+@media screen and (min-width: 1400px) {
+    header {
+        /*** source, position (x, y), / background-size, repetition**/
+        background: url(../img/header-plant-bg-lg.webp) center bottom / cover no-repeat;
+        height: 700px;
+    }
+}
